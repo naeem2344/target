@@ -21,7 +21,7 @@ box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 .home__sub__container .image__container img {
   height: 400px;
   width: auto;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
   transition: transform 0.5s ease;
   border-radius: 10px;
 }
