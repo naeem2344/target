@@ -57,7 +57,7 @@ const TargetImage = () => {
 
                 <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-                <a-video
+                {/* <a-video
                     ref={videoEntityRef}
                     src="#myVideo"
                     position="0 0 0"
@@ -66,7 +66,26 @@ const TargetImage = () => {
                     height="0.85"
                     mindar-image-target="targetIndex: 0"
                     loop="true"
-                ></a-video>
+                ></a-video> */}
+                <a-plane
+                    position="0 0 0"
+                    rotation="-90 0 0"
+                    width="1.5"
+                    height="0.85"
+                    material="shader: html; target: #youtubeVideo">
+                </a-plane>
+
+                <div id="youtubeVideo" style="display:none;">
+                    <iframe
+                        width="640"
+                        height="360"
+                        src="https://www.youtube.com/shorts/Us-Qkw93nR4?feature=share"
+                        frameBorder="0"
+                        allow="autoplay; encrypted-media"
+                        allowFullScreen
+                    ></iframe>
+                </div>
+
             </a-scene>
         </div>
     )
