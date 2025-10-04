@@ -12,6 +12,7 @@ const TargetImage = () => {
 
         if (!videoEl || !videoEntityEl) return;
 
+        // Handlers on the a-video entity (not scene!)
         const handleTargetFound = () => {
             videoEl.play().catch(err => console.log("Autoplay blocked:", err));
         };
@@ -45,8 +46,7 @@ const TargetImage = () => {
                     <video
                         id="myVideo"
                         ref={videoRef}
-                        // src="/target-image/video.mp4"
-                        src='https://youtu.be/iSNoJk5nt3c?si=-ss0rzanGCWBHfti'
+                        src="/target-image/video.mp4"
                         preload="auto"
                         muted
                         playsInline
