@@ -14,7 +14,7 @@ const Home = () => {
         </div>
         <div className='title__container'>
           <p>
-            Unlock your mobile phone's camera, scan the QR code, and effortlessly open the link in your browser for quick access. <Link to={'#'}>Click here to open the link.</Link>
+            Unlock your mobile phone's camera, scan the QR code, and effortlessly open the link in your browser for quick access. <Link to={'https://target-a2ic.vercel.app/target-image'}>Click here to open the link.</Link>
           </p>
         </div>
       </div>
