@@ -46,7 +46,7 @@ const TargetImage = () => {
                     <video
                         id="myVideo"
                         ref={videoRef}
-                        src="/target-image/video.mp4"
+                        src="/target-image/hon.mp4"
                         preload="auto"
                         muted
                         playsInline
