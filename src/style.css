@@ -1,20 +1,42 @@
-.App {
-  text-align: center;
+.home__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
 }
 
-.control-buttons {
-  position: relative;
-  z-index: 1000;
-}
-
-.container {
-  margin: 20px auto;
-  position: relative;
-  height: 300px;
-  width: 600px;
+.home__sub__container {
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 15px;
+  width: 500px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  text-align: center;
+  padding: 20px;
 }
 
-.a-enter-vr-button{
-    margin-top: -30px;
+.home__sub__container .image__container img {
+  height: 400px;
+  width: auto;
+  transform: rotate(90deg);
+  transition: transform 0.5s ease;
+  border-radius: 10px;
+}
+
+.home__sub__container .title__container {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.home__sub__container .title__container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.home__sub__container .title__container a:hover {
+  text-decoration: underline;
 }
