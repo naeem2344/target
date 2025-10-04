@@ -8,8 +8,9 @@ const App = () => {
   return (
     <Suspense fallback={<><p>Loading......</p></>}>
       <Routes>
-        <Route index element={<QRScanner />} />
-        <Route path="target-image" element={<TargetImage />} />
+        {/* <Route index element={<QRScanner />} /> */}
+        <Route index element={<TargetImage />} />
+        {/* <Route path="target-image" element={<TargetImage />} /> */}
       </Routes>
     </Suspense>
   )
