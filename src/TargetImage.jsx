@@ -48,7 +48,6 @@ const TargetImage = () => {
                         ref={videoRef}
                         src="/target-image/hon.mp4"
                         preload="auto"
-                        muted
                         playsInline
                         loop
                         crossorigin="anonymous"
