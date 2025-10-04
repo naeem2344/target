@@ -74,13 +74,15 @@
 
 // export default TargetImage
 
+
 import React, { useEffect, useRef } from "react";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
+import "aframe-html-shader";
 
 const TargetImage = () => {
-  const youtubeRef = useRef(null);
   const videoEntityRef = useRef(null);
+  const youtubeRef = useRef(null);
   const playerRef = useRef(null);
 
   useEffect(() => {
@@ -140,7 +142,7 @@ const TargetImage = () => {
       >
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        {/* This plane will act as the YouTube video screen */}
+        {/* AR plane that will show the YouTube video */}
         <a-plane
           ref={videoEntityRef}
           position="0 0 0"
@@ -148,16 +150,26 @@ const TargetImage = () => {
           width="1.5"
           height="0.85"
           mindar-image-target="targetIndex: 0"
+          material="shader: html; target: #youtubeDiv"
         ></a-plane>
       </a-scene>
 
       {/* Hidden YouTube iframe */}
       <div style={{ display: "none" }}>
         <div
-          id="youtube-player"
+          id="youtubeDiv"
           ref={youtubeRef}
           data-video-id="iSNoJk5nt3c"
-        ></div>
+        >
+          <iframe
+            width="640"
+            height="360"
+            src="https://youtu.be/iSNoJk5nt3c?si=-ss0rzanGCWBHfti"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          ></iframe>
+        </div>
       </div>
     </div>
   );
