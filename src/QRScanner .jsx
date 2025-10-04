@@ -1,19 +1,9 @@
-  import React, { useState } from 'react';
-  import QrScanner from '@yudiel/react-qr-scanner';
+import React from 'react'
 
-  const QRScanner = () => {
-    const [data, setData] = useState('No result');
+const QRScanner  = () => {
+  return (
+    <div>QRScanner </div>
+  )
+}
 
-    return (
-      <div>
-        <QrScanner
-          onResult={(result) => {
-            if (result) setData(result.text);
-          }}
-        />
-        <p>Scanned Data: {data}</p>
-      </div>
-    );
-  };
-
-  export default QRScanner;
+export default QRScanner 

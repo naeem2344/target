@@ -1,152 +1,18 @@
-// import React, { useEffect, useRef } from 'react'
-// import "aframe";
-// import "mind-ar/dist/mindar-image-aframe.prod.js";
+import React, { lazy, Suspense } from 'react';
 
-// const App = () => {
-//   const videoRef = useRef(null);
-//   const sceneRef = useRef(null);
-
-//   useEffect(() => {
-//     const sceneEl = sceneRef.current;
-//     const videoEl = videoRef.current;
-
-//     if (!sceneEl || !videoEl) return;
-
-//     // Handlers
-//     const handleTargetFound = () => {
-//       videoEl.play().catch(err => console.log("Autoplay blocked:", err));
-//     };
-
-//     const handleTargetLost = () => {
-//       videoEl.pause();
-//     };
-
-//     sceneEl.addEventListener("targetFound", handleTargetFound);
-//     sceneEl.addEventListener("targetLost", handleTargetLost);
-
-//     return () => {
-//       sceneEl.removeEventListener("targetFound", handleTargetFound);
-//       sceneEl.removeEventListener("targetLost", handleTargetLost);
-//     };
-//   }, []);
-
-//   return (
-//     <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0, overflow: "hidden" }}>
-//       <a-scene
-//         ref={sceneRef}
-//         mindar-image="imageTargetSrc: /target-image/card.mind; autoStart: true;"
-//         embedded
-//         color-space="sRGB"
-//         renderer="colorManagement: true, physicallyCorrectLights"
-//         vr-mode-ui="enabled: false"
-//         device-orientation-permission-ui="enabled: false"
-//         style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
-//       >
-//         <a-assets>
-//           <video
-//             id="myVideo"
-//             src="/target-image/video.mp4"
-//             preload="auto"
-//             muted
-//             playsInline
-//             loop
-//             autoPlay
-//             crossorigin="anonymous"
-//           ></video>
-//         </a-assets>
-
-//         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-//         <a-video
-//           ref={videoRef}
-//           src="#myVideo"
-//           position="0 0 0"
-//           rotation="-90 0 0"
-//           width="1.5"
-//           height="0.85"
-//           mindar-image-target="targetIndex: 0"
-//           autoplay="false"
-//           loop="true"
-//         ></a-video>
-//       </a-scene>
-//     </div>
-//   );
-// };
-
-// export default App;
-
-
-import React, { useEffect, useRef } from 'react'
-import "aframe";
-import "mind-ar/dist/mindar-image-aframe.prod.js";
+import { Route, Routes } from "react-router-dom"
+const TargetImage = lazy(() => import('./TargetImage'));
+const QRScanner = lazy(() => import('./QRScanner '));
 
 const App = () => {
-  const videoRef = useRef(null);
-  const videoEntityRef = useRef(null); // reference for the <a-video>
-
-  useEffect(() => {
-    const videoEl = videoRef.current;
-    const videoEntityEl = videoEntityRef.current;
-
-    if (!videoEl || !videoEntityEl) return;
-
-    // Handlers on the a-video entity (not scene!)
-    const handleTargetFound = () => {
-      videoEl.play().catch(err => console.log("Autoplay blocked:", err));
-    };
-
-    const handleTargetLost = () => {
-      videoEl.pause();
-    };
-
-    videoEntityEl.addEventListener("targetFound", handleTargetFound);
-    videoEntityEl.addEventListener("targetLost", handleTargetLost);
-
-    return () => {
-      videoEntityEl.removeEventListener("targetFound", handleTargetFound);
-      videoEntityEl.removeEventListener("targetLost", handleTargetLost);
-    };
-  }, []);
-
   return (
-    <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0, overflow: "hidden" }}>
-      <a-scene
-        mindar-image="imageTargetSrc: /target-image/card.mind; autoStart: true;"
-        embedded
-        color-space="sRGB"
-        renderer="colorManagement: true, physicallyCorrectLights"
-        vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: false"
-        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
-      >
-        <a-assets>
-          <video
-            id="myVideo"
-            ref={videoRef}
-            src="/target-image/video.mp4"
-            preload="auto"
-            muted
-            playsInline
-            loop
-            crossorigin="anonymous"
-          ></video>
-        </a-assets>
+    <Suspense fallback={<><p>Loading......</p></>}>
+      <Routes>
+        <Route index element={<QRScanner />} />
+        <Route path="target-image" element={<TargetImage />} />
+      </Routes>
+    </Suspense>
+  )
+}
 
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-        <a-video
-          ref={videoEntityRef}
-          src="#myVideo"
-          position="0 0 0"
-          rotation="-90 0 0"
-          width="1.5"
-          height="0.85"
-          mindar-image-target="targetIndex: 0"
-          loop="true"
-        ></a-video>
-      </a-scene>
-    </div>
-  );
-};
-
-export default App;
+export default App
