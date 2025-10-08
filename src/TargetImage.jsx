@@ -118,7 +118,7 @@ const TargetImage = () => {
                 style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
             >
                 <a-assets>
-                    {/* <video
+                    <video
                         id="myVideo"
                         ref={videoRef}
                         src="/target-image/hon.mp4"
@@ -131,7 +131,7 @@ const TargetImage = () => {
                             width: '200px'
                         }}
                         crossorigin="anonymous"
-                    ></video> */}
+                    ></video>
                 </a-assets>
 
                 <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -145,6 +145,10 @@ const TargetImage = () => {
                     height="0.85"
                     mindar-image-target="targetIndex: 0"
                     loop="true"
+                    style={{
+                        height: '100px',
+                        width: '300px'
+                    }}
                 ></a-video>
             </a-scene>
         </div>
