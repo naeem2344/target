@@ -127,7 +127,7 @@ const TargetImage = () => {
                         loop
                         muted
                         crossorigin="anonymous"
-                        style={{height:'400px', border: '1px solid red'}}
+                        style={{ height: '400px', border: '1px solid red' }}
                     ></video>
                 </a-assets>
 
@@ -138,6 +138,8 @@ const TargetImage = () => {
                     src="#myVideo"
                     mindar-image-target="targetIndex: 0"
                     loop="true"
+                    width="1"
+                    height="0.5625"  // For 16:9 video
                 ></a-video>
             </a-scene>
         </div>
