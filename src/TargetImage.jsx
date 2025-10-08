@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
 
@@ -34,14 +34,13 @@ const TargetImage = () => {
     return (
         <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0, overflow: "hidden" }}>
             <a-scene
-                mindar-image="imageTargetSrc: /target-image/targets.mind; autoStart: true; uiError:yes; uiLoading:yes; uiScanning:yes"
+                mindar-image="imageTargetSrc: /target-image/targets.mind; autoStart: true;"
                 embedded
                 color-space="sRGB"
                 renderer="colorManagement: true, physicallyCorrectLights"
                 vr-mode-ui="enabled: false"
                 device-orientation-permission-ui="enabled: false"
                 style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
-            
             >
                 <a-assets>
                     <video
