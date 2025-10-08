@@ -139,7 +139,7 @@ const TargetImage = () => {
                     mindar-image-target="targetIndex: 0"
                     loop="true"
                     width="1"
-                    height="0.5625"  // For 16:9 video
+                    height="0.6625"  // For 16:9 video
                 ></a-video>
             </a-scene>
         </div>
