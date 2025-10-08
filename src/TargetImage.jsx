@@ -34,7 +34,8 @@ const TargetImage = () => {
     return (
         <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0, overflow: "hidden" }}>
             <a-scene
-                mindar-image="imageTargetSrc: /target-image/targets.mind; autoStart: true;"
+                // mindar-image="imageTargetSrc: /target-image/targets.mind; autoStart: true;"
+                mindar-image="imageTargetSrc: /target-image/targets.mind; autoStart: true; filterMinCF:0.0001; warmupTolerance: 0.0001"
                 embedded
                 color-space="sRGB"
                 renderer="colorManagement: true, physicallyCorrectLights"
