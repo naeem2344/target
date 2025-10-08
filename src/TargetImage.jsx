@@ -173,6 +173,29 @@ const TargetImage = () => {
     const videoRef = useRef(null);
     const videoEntityRef = useRef(null);
 
+    // useLayoutEffect(() => {
+    //     const videoEl = videoRef.current;
+    //     const videoEntityEl = videoEntityRef.current;
+
+    //     if (!videoEl || !videoEntityEl) return;
+
+    //     const handleTargetFound = () => {
+    //         videoEl.play()
+    //     };
+
+    //     const handleTargetLost = () => {
+    //         videoEl.pause();
+    //     };
+
+    //     videoEntityEl.addEventListener("targetFound", handleTargetFound);
+    //     videoEntityEl.addEventListener("targetLost", handleTargetLost);
+
+    //     return () => {
+    //         videoEntityEl.removeEventListener("targetFound", handleTargetFound);
+    //         videoEntityEl.removeEventListener("targetLost", handleTargetLost);
+    //     };
+    // }, []);
+
     useLayoutEffect(() => {
         const videoEl = videoRef.current;
         const videoEntityEl = videoEntityRef.current;
@@ -180,21 +203,30 @@ const TargetImage = () => {
         if (!videoEl || !videoEntityEl) return;
 
         const handleTargetFound = () => {
-            videoEl.play()
+            videoEl.play().catch((e) => {
+                console.warn("Auto-play failed, waiting for user interaction...");
+            });
         };
 
-        const handleTargetLost = () => {
-            videoEl.pause();
+        const handleUserInteraction = () => {
+            videoEl.muted = false;
+            videoEl.play();
+            window.removeEventListener("click", handleUserInteraction);
         };
+
+        // Attach on first user click/tap
+        window.addEventListener("click", handleUserInteraction);
 
         videoEntityEl.addEventListener("targetFound", handleTargetFound);
-        videoEntityEl.addEventListener("targetLost", handleTargetLost);
+        videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
 
         return () => {
             videoEntityEl.removeEventListener("targetFound", handleTargetFound);
-            videoEntityEl.removeEventListener("targetLost", handleTargetLost);
+            videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
+            window.removeEventListener("click", handleUserInteraction);
         };
     }, []);
+
 
     return (
         // <div
