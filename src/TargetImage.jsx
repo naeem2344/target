@@ -140,7 +140,7 @@ const TargetImage = () => {
                     loop="true"
                     width="1"
                     height="0.5625"
-                    position="0 -0.1 0"
+                    position="0 0.2 0"
                 ></a-video>
             </a-scene>
         </div>
