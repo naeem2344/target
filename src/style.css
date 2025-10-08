@@ -10,7 +10,7 @@
 .home__sub__container {
 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 15px;
-  width: 500px;
+  /* width: 500px; */
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;

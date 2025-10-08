@@ -7,7 +7,7 @@ const Home = () => {
     <div className='home__container'>
       <div className='home__sub__container'>
         <div className='image__container'>
-          <img src="/target-image/target-imge.jpg" alt="target-image" />
+          <img src="/target-image/gorilla.jpg" alt="target-image" />
         </div>
         <div>
           <QRCodeSVG value={'https://target-a2ic.vercel.app/target-image'} />
