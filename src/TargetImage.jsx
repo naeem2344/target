@@ -127,6 +127,7 @@ const TargetImage = () => {
                         loop
                         muted
                         crossorigin="anonymous"
+                        style={{height:'400px', border: '1px solid red'}}
                     ></video>
                 </a-assets>
 
