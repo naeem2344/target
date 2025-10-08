@@ -75,7 +75,7 @@
 
 
 
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
 
@@ -153,7 +153,7 @@ const TargetImage = () => {
                         src="/target-image/hon.mp4"
                         preload="auto"
                         playsinline
-                        muted
+                        // muted
                         loop
                         crossorigin="anonymous"
                     ></video>
