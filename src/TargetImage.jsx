@@ -135,21 +135,23 @@ const TargetImage = () => {
                 </a-assets>
 
                 <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-                <a-video
-                    ref={videoEntityRef}
-                    src="#myVideo"
-                    position="0 0 0"
-                    rotation="0 0 0"
-                    width="1.5"
-                    height="0.85"
-                    mindar-image-target="targetIndex: 0"
-                    loop="true"
-                    style={{
-                        height: '100px',
-                        width: '300px'
-                    }}
-                ></a-video>
+                <a-entity mindar-image-target="targetIndex: 0">
+                    <a-plane src="#myVideo" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+                    <a-video
+                        ref={videoEntityRef}
+                        src="#myVideo"
+                        position="0 0 0"
+                        rotation="0 0 0"
+                        width="1.5"
+                        height="0.85"
+                        mindar-image-target="targetIndex: 0"
+                        loop="true"
+                        style={{
+                            height: '100px',
+                            width: '300px'
+                        }}
+                    ></a-video>
+                </a-entity>
             </a-scene>
         </div>
     )
