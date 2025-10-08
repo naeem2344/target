@@ -126,6 +126,10 @@ const TargetImage = () => {
                         playsInline
                         loop
                         muted
+                        style={{
+                            height: '100px',
+                            width: '200px'
+                        }}
                         crossorigin="anonymous"
                     ></video>
                 </a-assets>
