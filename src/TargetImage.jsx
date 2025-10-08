@@ -135,8 +135,8 @@ const TargetImage = () => {
                 <a-video
                     ref={videoEntityRef}
                     src="#myVideo"
-                    position="0 0 0"
-                    rotation="0 0 0"
+                    // position="0 0 0"
+                    // rotation="0 0 0"
                     mindar-image-target="targetIndex: 0"
                     loop="true"
                 ></a-video>
