@@ -75,7 +75,7 @@
 // export default TargetImage
 
 
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
 
@@ -121,7 +121,7 @@ const TargetImage = () => {
                     <video
                         id="myVideo"
                         ref={videoRef}
-                        src="/target-image/hon.mp4"
+                        src="/target-image/video.mp4"
                         preload="auto"
                         playsinline
                         loop
@@ -135,8 +135,6 @@ const TargetImage = () => {
                 <a-video
                     ref={videoEntityRef}
                     src="#myVideo"
-                    // position="0 0 0"
-                    // rotation="0 0 0"
                     mindar-image-target="targetIndex: 0"
                     loop="true"
                 ></a-video>
