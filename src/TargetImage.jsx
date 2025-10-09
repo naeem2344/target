@@ -78,7 +78,6 @@ const TargetImage = () => {
                     height="0.5625"
                     position="0 1 0"
                 ></a-video>
-                <a-box position="0 0 0.1" rotation="0 0 0" width="1" height="1" depth="0.2"></a-box>
             </a-scene>
         </div>
     );
