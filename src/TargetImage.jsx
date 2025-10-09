@@ -2,6 +2,23 @@ import { useLayoutEffect, useRef } from "react";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
 
+/*
+
+useLayoutEffect(() => {
+  const handleOrientationChange = () => {
+    // Force reload or restart MindAR session
+    window.location.reload(); // crude but effective
+  };
+
+  window.addEventListener('orientationchange', handleOrientationChange);
+
+  return () => {
+    window.removeEventListener('orientationchange', handleOrientationChange);
+  };
+}, []);
+
+*/
+
 if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
     AFRAME.registerComponent("fix-ios-webgl", {
         init: function () {
@@ -30,13 +47,20 @@ const TargetImage = () => {
             videoEl.muted = false;
             videoEl.play()
         };
+        const handleOrientationChange = () => {
+            window.location.reload();
+        };
 
         videoEntityEl.addEventListener("targetFound", handleTargetFound);
         videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
 
+
+        window.addEventListener('orientationchange', handleOrientationChange);
+
         return () => {
             videoEntityEl.removeEventListener("targetFound", handleTargetFound);
             videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
+            window.removeEventListener('orientationchange', handleOrientationChange);
         };
     }, []);
 
@@ -51,6 +75,7 @@ const TargetImage = () => {
                 renderer="colorManagement: true, physicallyCorrectLights"
                 vr-mode-ui="enabled: false"
                 device-orientation-permission-ui="enabled: false"
+
                 style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
             >
                 <a-assets>
