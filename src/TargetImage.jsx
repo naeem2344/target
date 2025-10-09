@@ -33,22 +33,12 @@ const TargetImage = () => {
             });
         };
 
-        // const handleUserInteraction = () => {
-        //     videoEl.muted = false;
-        //     videoEl.play();
-        //     window.removeEventListener("click", handleUserInteraction);
-        // };
-
-        // Attach on first user click/tap
-        // window.addEventListener("click", handleUserInteraction);
-
         videoEntityEl.addEventListener("targetFound", handleTargetFound);
         videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
 
         return () => {
             videoEntityEl.removeEventListener("targetFound", handleTargetFound);
             videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
-            // window.removeEventListener("click", handleUserInteraction);
         };
     }, []);
 
