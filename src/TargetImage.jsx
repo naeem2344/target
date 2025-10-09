@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
 
@@ -43,23 +43,31 @@ const TargetImage = () => {
 
         if (!videoEl || !videoEntityEl) return;
 
+        let timeoutId;
+
         const handleTargetFound = () => {
-            videoEl.muted = false;
-            videoEl.play()
-        };
-        const handleOrientationChange = () => {
-            window.location.reload();
+            videoEl.play();
+            timeoutId = setTimeout(() => {
+                videoEl.muted = false; // i can add this functionality using set time-out because for iOS in android it works fine but in iOS blocks play music and video at a time   
+            }, 50);
         };
 
-        window.addEventListener('orientationchange', handleOrientationChange);
+
         videoEntityEl.addEventListener("targetFound", handleTargetFound);
         videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
 
         return () => {
-            window.removeEventListener('orientationchange', handleOrientationChange);
             videoEntityEl.removeEventListener("targetFound", handleTargetFound);
             videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
+            clearTimeout(timeoutId)
         };
+    }, []);
+
+
+    useEffect(() => {
+        screen.orientation.addEventListener('change', () => {
+            window.location.reload();
+        })
     }, []);
 
 
