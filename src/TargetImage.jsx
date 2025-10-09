@@ -51,16 +51,14 @@ const TargetImage = () => {
             window.location.reload();
         };
 
+        window.addEventListener('orientationchange', handleOrientationChange);
         videoEntityEl.addEventListener("targetFound", handleTargetFound);
         videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
 
-
-        window.addEventListener('orientationchange', handleOrientationChange);
-
         return () => {
+            window.removeEventListener('orientationchange', handleOrientationChange);
             videoEntityEl.removeEventListener("targetFound", handleTargetFound);
             videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
-            window.removeEventListener('orientationchange', handleOrientationChange);
         };
     }, []);
 
