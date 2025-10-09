@@ -90,10 +90,10 @@ const TargetImage = () => {
                         ref={videoRef}
                         src="/target-image/hon.mp4"
                         preload="auto"
-                        playsinline
+                        playsInline
                         loop
                         muted
-                        crossorigin="anonymous"
+                        crossOrigin="anonymous"
                         style={{ height: '400px', border: '1px solid red' }}
                     ></video>
                 </a-assets>
