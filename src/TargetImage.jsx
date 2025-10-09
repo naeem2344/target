@@ -2,22 +2,6 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
 
-/*
-
-useLayoutEffect(() => {
-  const handleOrientationChange = () => {
-    // Force reload or restart MindAR session
-    window.location.reload(); // crude but effective
-  };
-
-  window.addEventListener('orientationchange', handleOrientationChange);
-
-  return () => {
-    window.removeEventListener('orientationchange', handleOrientationChange);
-  };
-}, []);
-
-*/
 
 if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
     AFRAME.registerComponent("fix-ios-webgl", {
@@ -43,31 +27,25 @@ const TargetImage = () => {
 
         if (!videoEl || !videoEntityEl) return;
 
-        let timeoutId;
-
         const handleTargetFound = () => {
             videoEl.play();
-            timeoutId = setTimeout(() => {
-                videoEl.muted = false; // i can add this functionality using set time-out because for iOS in android it works fine but in iOS blocks play music and video at a time   
-            }, 50);
         };
 
+        const handleUserInteraction = () => {
+            videoEl.muted = false;
+            videoEl.play();
+            window.removeEventListener("click", handleUserInteraction);
+        };
 
+        window.addEventListener("click", handleUserInteraction);
         videoEntityEl.addEventListener("targetFound", handleTargetFound);
         videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
 
         return () => {
             videoEntityEl.removeEventListener("targetFound", handleTargetFound);
             videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
-            clearTimeout(timeoutId)
+            window.removeEventListener("click", handleUserInteraction);
         };
-    }, []);
-
-
-    useEffect(() => {
-        screen.orientation.addEventListener('change', () => {
-            window.location.reload();
-        })
     }, []);
 
 
