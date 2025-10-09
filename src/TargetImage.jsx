@@ -27,10 +27,8 @@ const TargetImage = () => {
         if (!videoEl || !videoEntityEl) return;
 
         const handleTargetFound = () => {
-             videoEl.muted = false;
-            videoEl.play().catch((e) => {
-                console.warn("Auto-play failed, waiting for user interaction...");
-            });
+            videoEl.muted = false;
+            videoEl.play()
         };
 
         videoEntityEl.addEventListener("targetFound", handleTargetFound);
